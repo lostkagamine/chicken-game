@@ -1,0 +1,22 @@
+<html>
+    <!-- chicken game - alpha version
+        made by a guy in the UK called ry00001 !-->
+    <body>
+        <div class="game">
+            <div class="topBar">
+                <span class="topbar-text">chicken game - alpha version</span>
+                <a class="_resetBtn" onclick="game.reset()">[reset game]</a>
+            </div><br>
+            <p class="statusBar">$0 ($0/second) - 0 chickens</p>
+            <button class="_chickenBtn" onclick="game.hatch()">Hatch (click)</button>
+        </div>
+    </body>
+    <head>
+        <!-- setup !-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+        <script src="js/i18n.js"></script>
+        <script src="js/game.js"></script>
+        <link rel='stylesheet' href='css/main.css' />
+        <title>Chicken Game alpha</title>
+    </head>
+</html>
