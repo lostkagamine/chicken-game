@@ -3,9 +3,9 @@ class Game {
         this.income = 0;
         this.chickens = 0;
         this.money = 0;
-        this.eggValue = 1;
-        this.eggDelay = 10000;
-        this.prevDelay = 10000; // keep a history of delays
+        this.eggValue = 0.1;
+        this.eggDelay = 1000;
+        this.prevDelay = this.eggDelay; // keep a history of delays
         this.eggInterval = setInterval(() => this.layEgg(), this.eggDelay)
         setInterval(() => this.update(), 150)
     }
@@ -20,10 +20,13 @@ class Game {
         this.income = (this.chickens * this.eggValue) / (this.eggDelay / 1000);
     }
     layEgg() {
-        this.money += this.chickens * this.eggValue;
+        this.money += this.income
+    }
+    truncate(i) {
+        return Math.round(i * 100) / 100
     }
     format(str) {
-        return str.replace('{income}', this.income).replace('{money}', this.money).replace('{chickens}', this.chickens)
+        return str.replace('{income}', this.truncate(this.income)).replace('{money}', this.truncate(this.money)).replace('{chickens}', this.chickens)
     }
     hatch() {
         this.chickens += 1;
