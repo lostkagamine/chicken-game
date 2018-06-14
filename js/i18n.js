@@ -12,6 +12,17 @@ const locales = [
             resetBtn: '[reset game]',
             statusBar: '${money} (${income}/second) - {chickens} chickens'
         }
+    },
+    {
+        name: 'Pig Latin',
+        id: '_joke_pl',
+        strings: {
+            chickens: 'hickenscay',
+            money: '$',
+            chickenBtn: 'Atchhay (lickcay)',
+            resetBtn: '[esetray amegay]',
+            statusBar: '${money} (${income}/econdsay) - {chickens} hickenscay'
+        }
     }
 ]
 
@@ -38,6 +49,8 @@ class LocaleManager {
         let currLocale = this.getById(this.current);
         if (!currLocale) {
             alert('Oops, something bad has happened while switching locales. Please report this to the developer.');
+            this.setLocale('en');
+            return;
         }
         classes.forEach(i => {
             $(`.${i}`).html(currLocale.strings[i.slice(1)])

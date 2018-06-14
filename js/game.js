@@ -9,6 +9,9 @@ class Game {
         this.eggInterval = setInterval(() => this.layEgg(), this.eggDelay)
         setInterval(() => this.update(), 150)
     }
+    format(str) {
+        return str.replace('{income}', this.truncate(this.income)).replace('{money}', this.truncate(this.money)).replace('{chickens}', this.chickens)
+    }
     update() {
         $('.statusBar').html(this.format(_('statusBar')))
         if (this.eggDelay != this.prevDelay) {
@@ -25,9 +28,6 @@ class Game {
     truncate(i) {
         return Math.round(i * 100) / 100
     }
-    format(str) {
-        return str.replace('{income}', this.truncate(this.income)).replace('{money}', this.truncate(this.money)).replace('{chickens}', this.chickens)
-    }
     hatch() {
         this.chickens += 1;
         this.update();
@@ -36,9 +36,9 @@ class Game {
         this.income = 0;
         this.chickens = 0;
         this.money = 0;
-        this.eggValue = 1;
-        this.eggDelay = 10000;
-        this.prevDelay = 10000; // keep a history of delays
+        this.eggValue = 0.1; // NERF
+        this.eggDelay = 1000;
+        this.prevDelay = this.eggDelay; // keep a history of delays
     }
 }
 
